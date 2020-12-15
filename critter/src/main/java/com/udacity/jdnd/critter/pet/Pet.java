@@ -1,11 +1,13 @@
 package com.udacity.jdnd.critter.pet;
 
+import com.udacity.jdnd.critter.schedule.Schedule;
+import com.udacity.jdnd.critter.user.Customer;
 import org.hibernate.annotations.Nationalized;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 public class Pet {
@@ -14,12 +16,19 @@ public class Pet {
     @GeneratedValue
     private long id;
 
+    @Enumerated(EnumType.STRING)
     private PetType type;
 
     @Nationalized
     private String name;
 
-    private long ownerId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id",nullable = false)
+    private Customer customer;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "schedules_id")
+    private Set<Schedule> schedules;
 
     private LocalDate birthDate;
 
@@ -41,12 +50,12 @@ public class Pet {
         this.name = name;
     }
 
-    public long getOwnerId() {
-        return ownerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public LocalDate getBirthDate() {

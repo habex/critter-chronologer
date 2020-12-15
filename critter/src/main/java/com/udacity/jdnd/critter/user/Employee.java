@@ -1,11 +1,13 @@
 package com.udacity.jdnd.critter.user;
 
+import com.udacity.jdnd.critter.schedule.Schedule;
 import org.hibernate.annotations.Nationalized;
+import org.hibernate.annotations.Type;
+import org.springframework.data.relational.core.mapping.Column;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.DayOfWeek;
+import java.util.EnumSet;
 import java.util.Set;
 
 @Entity
@@ -18,9 +20,19 @@ public class Employee {
     @Nationalized
     private String name;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "EmployeeSkill", joinColumns = @JoinColumn(name = "id"))
+    @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> skills;
 
+    @ElementCollection(fetch =FetchType.EAGER,  targetClass = DayOfWeek.class)
+    @CollectionTable(name = "Days_Available", joinColumns = @JoinColumn(name = "id"))
+    @Enumerated(EnumType.STRING)
     private Set<DayOfWeek> daysAvailable;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "schedules_id")
+    private Set<Schedule> schedules;
 
     public Employee() {
     }
