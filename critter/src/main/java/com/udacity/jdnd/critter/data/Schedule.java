@@ -1,18 +1,12 @@
-package com.udacity.jdnd.critter.schedule;
+package com.udacity.jdnd.critter.data;
 
-import com.udacity.jdnd.critter.pet.Pet;
-import com.udacity.jdnd.critter.user.Employee;
-import com.udacity.jdnd.critter.user.EmployeeSkill;
+import com.udacity.jdnd.critter.enums.EmployeeSkill;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Represents the form that schedule request and response data takes. Does not map
- * to the database directly.
- */
 @Entity
 public class Schedule {
 
@@ -30,8 +24,7 @@ public class Schedule {
 
     private LocalDate date;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "EmployeeSkill", joinColumns = @JoinColumn(name = "id"))
+    @ElementCollection
     @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> activities;
 

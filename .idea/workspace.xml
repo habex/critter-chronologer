@@ -3,7 +3,155 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e463c8c0-a1b9-467b-ac9f-e51540f4304b" name="Default Changelist" comment="Repositories, Services added and Controllers modified with basic CRUD operations.">
+      <change afterPath="$PROJECT_DIR$/critter/src/test/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/critter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/critter/critter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/critter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/course3/critter/CritterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/CritterApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/course3/critter/CritterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/CritterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/course3/critter/pet/PetDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/dto/PetDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/course3/critter/pet/PetType.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/enums/PetType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/course3/critter/schedule/ScheduleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/dto/ScheduleDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/course3/critter/user/CustomerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/dto/CustomerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/course3/critter/user/EmployeeDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/dto/EmployeeDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/course3/critter/user/EmployeeRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/dto/EmployeeRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/course3/critter/user/EmployeeSkill.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/enums/EmployeeSkill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/pet/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Pet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/schedule/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Schedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/user/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/user/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/test/java/com/udacity/jdnd/course3/critter/CritterFunctionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/test/java/com/udacity/jdnd/critter/CritterFunctionalTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lWSXAhkVpTUR6QKnvYvtRwzGkI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\IdeaProjects\my udacity projects\03-critter-chronologer\critter\src\main\java\com\udacity\jdnd\critter\repository" />
+      <recent name="C:\IdeaProjects\my udacity projects\03-critter-chronologer\critter\src\test" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.udacity.jdnd.critter.repository" />
+      <recent name="com.udacity.jdnd.critter" />
+      <recent name="com.udacity.jdnd.critter.controller" />
+      <recent name="com.udacity.jdnd.critter.enums" />
+      <recent name="com.udacity.jdnd.critter.data" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.udacity.jdnd.critter.service" />
+      <recent name="com.udacity.jdnd.critter.repository" />
+      <recent name="com.udacity.jdnd.critter.data" />
+      <recent name="com.udacity.jdnd.critter.schedule" />
+      <recent name="com.udacity.jdnd.course3.critter.pet" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.CritterApplication">
+    <configuration name="CritterApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.udacity.jdnd.critter.CritterApplication" />
+      <module name="critter" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CritterFunctionalTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="critter" />
+      <option name="PACKAGE_NAME" value="com.udacity.jdnd.critter" />
+      <option name="MAIN_CLASS_NAME" value="com.udacity.jdnd.critter.CritterFunctionalTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CritterFunctionalTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="critter" />
+      <option name="PACKAGE_NAME" value="com.udacity.jdnd.critter" />
+      <option name="MAIN_CLASS_NAME" value="com.udacity.jdnd.critter.CritterFunctionalTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PetRepositoryTest.getByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="critter" />
+      <option name="PACKAGE_NAME" value="com.udacity.jdnd.critter.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.udacity.jdnd.critter.repository.PetRepositoryTest" />
+      <option name="METHOD_NAME" value="getByName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PetRepositoryTest.save" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="critter" />
+      <option name="PACKAGE_NAME" value="com.udacity.jdnd.critter.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.udacity.jdnd.critter.repository.PetRepositoryTest" />
+      <option name="METHOD_NAME" value="save" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CritterApplication" />
+        <item itemvalue="JUnit.PetRepositoryTest.getByName" />
+        <item itemvalue="JUnit.PetRepositoryTest.save" />
+        <item itemvalue="JUnit.CritterFunctionalTest" />
+        <item itemvalue="JUnit.CritterFunctionalTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Employees and Customers" />
+    <MESSAGE value="Employee, Customer and Pet" />
+    <MESSAGE value="Design Entities To Represent Data added:" />
+    <MESSAGE value="Design Entities To Represent Data added: Schedule,Employee, Customer and Pet" />
+    <MESSAGE value="Repositories, Services added and Controllers modified with basic CRUD operations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Repositories, Services added and Controllers modified with basic CRUD operations." />
   </component>
 </project>

@@ -1,4 +1,6 @@
-package com.udacity.jdnd.course3.critter.pet;
+package com.udacity.jdnd.critter.dto;
+
+import com.udacity.jdnd.critter.enums.PetType;
 
 import java.time.LocalDate;
 
@@ -7,6 +9,7 @@ import java.time.LocalDate;
  * to the database directly.
  */
 public class PetDTO {
+
     private long id;
     private PetType type;
     private String name;

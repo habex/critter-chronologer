@@ -1,9 +1,7 @@
-package com.udacity.jdnd.critter.pet;
+package com.udacity.jdnd.critter.data;
 
-import com.udacity.jdnd.critter.schedule.Schedule;
-import com.udacity.jdnd.critter.user.Customer;
+import com.udacity.jdnd.critter.enums.PetType;
 import org.hibernate.annotations.Nationalized;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,7 +21,7 @@ public class Pet {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id",nullable = false)
+    @JoinColumn(name = "owner_id")
     private Customer customer;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -33,6 +31,9 @@ public class Pet {
     private LocalDate birthDate;
 
     private String notes;
+
+    public Pet() {
+    }
 
     public PetType getType() {
         return type;

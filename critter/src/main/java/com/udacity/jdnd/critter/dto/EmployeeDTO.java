@@ -1,4 +1,6 @@
-package com.udacity.jdnd.course3.critter.user;
+package com.udacity.jdnd.critter.dto;
+
+import com.udacity.jdnd.critter.enums.EmployeeSkill;
 
 import java.time.DayOfWeek;
 import java.util.Set;
@@ -8,6 +10,7 @@ import java.util.Set;
  * to the database directly.
  */
 public class EmployeeDTO {
+
     private long id;
     private String name;
     private Set<EmployeeSkill> skills;
