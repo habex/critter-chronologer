@@ -4,10 +4,13 @@ import com.udacity.jdnd.critter.data.Pet;
 import com.udacity.jdnd.critter.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Transactional
 public class PetService {
 
     @Autowired
@@ -22,7 +25,18 @@ public class PetService {
     }
 
     public Pet findById(Long id) {
-        return petRepository.findById(id).get();
+        Optional<Pet> optionalPet = petRepository.findById(id);
+        if (optionalPet.isPresent()){
+            return optionalPet.get();
+        }
+        return null;
     }
 
+    public List<Pet> findByCustomerId(long ownerId){
+        Optional<List<Pet>> pets = petRepository.findByCustomerId(ownerId);
+        if(pets.isPresent()){
+            return pets.get();
+        }
+        return null;
+    }
 }

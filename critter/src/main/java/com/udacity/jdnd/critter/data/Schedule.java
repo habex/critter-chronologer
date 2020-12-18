@@ -14,11 +14,11 @@ public class Schedule {
     @GeneratedValue
     private long id;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "employee_id")
     private List<Employee> employees;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "pet_id")
     private List<Pet> pets;
 

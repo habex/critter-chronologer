@@ -21,7 +21,6 @@ public class PetController {
 
     @Autowired
     PetService petService;
-
     @Autowired
     CustomerService customerService;
 
@@ -48,15 +47,15 @@ public class PetController {
 
     @GetMapping
     public List<PetDTO> getPets() {
-        List<PetDTO> petDTOS = new ArrayList<>();
-        petService.findAll().forEach(pet -> petDTOS.add(convertPetToPetDTO(pet, new PetDTO())));
-        return petDTOS;
+        List<PetDTO> petDTOs = new ArrayList<>();
+        petService.findAll().forEach(pet -> petDTOs.add(convertPetToPetDTO(pet, new PetDTO())));
+        return petDTOs;
     }
 
     @GetMapping("/owner/{ownerId}")
     public List<PetDTO> getPetsByOwner(@PathVariable long ownerId) {
         List<PetDTO> petDTOs = new ArrayList<>();
-        petService.findByCustomerId(ownerId).forEach(pet -> petDTOs.add(convertPetToPetDTO(pet,null)));
+        petService.findByCustomerId(ownerId).forEach(pet -> petDTOs.add(convertPetToPetDTO(pet,new PetDTO())));
         return petDTOs;
     }
 
