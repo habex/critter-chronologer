@@ -16,11 +16,8 @@ public class Customer {
     @Nationalized
     private String name;
 
-    // matches either empty string or 10 digits number
-    @Pattern(regexp="(^$|[0-9]{10})")
     private String phoneNumber;
 
-    @Column
     private String notes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)

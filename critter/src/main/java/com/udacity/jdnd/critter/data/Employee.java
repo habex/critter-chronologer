@@ -25,7 +25,7 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Set<DayOfWeek> daysAvailable;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "schedules_id")
     private Set<Schedule> schedules;
 
@@ -56,12 +56,20 @@ public class Employee {
         this.skills = skills;
     }
 
-    public Set<DayOfWeek> getDaysAvailable() {
+    public Set<DayOfWeek>  getDaysAvailable() {
         return daysAvailable;
     }
 
     public void setDaysAvailable(Set<DayOfWeek> daysAvailable) {
         this.daysAvailable = daysAvailable;
+    }
+
+    public Set<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(Set<Schedule> schedules) {
+        this.schedules = schedules;
     }
 
     @Override

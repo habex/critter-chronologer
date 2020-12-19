@@ -1,13 +1,17 @@
 package com.udacity.jdnd.critter.service;
 
 import com.udacity.jdnd.critter.data.Customer;
+import com.udacity.jdnd.critter.data.Pet;
 import com.udacity.jdnd.critter.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Transactional
 public class CustomerService {
 
     @Autowired
@@ -22,7 +26,18 @@ public class CustomerService {
     }
 
     public Customer findById(Long id) {
-        return customerRepository.findById(id).get();
+        Optional<Customer> optionalCustomer = customerRepository.findById(id);
+        if(optionalCustomer.isPresent()){
+            return optionalCustomer.get();
+        }
+        return null;
+    }
+    public Customer findByPet(Pet pet) {
+        Optional<Customer> optionalCustomer = customerRepository.findByPets(pet);
+        if(optionalCustomer.isPresent()){
+            return optionalCustomer.get();
+        }
+        return null;
     }
 
 }

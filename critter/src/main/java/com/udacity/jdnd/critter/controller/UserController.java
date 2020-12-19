@@ -3,11 +3,9 @@ package com.udacity.jdnd.critter.controller;
 import com.udacity.jdnd.critter.data.Customer;
 import com.udacity.jdnd.critter.data.Employee;
 import com.udacity.jdnd.critter.data.Pet;
-import com.udacity.jdnd.critter.data.Schedule;
 import com.udacity.jdnd.critter.dto.CustomerDTO;
 import com.udacity.jdnd.critter.dto.EmployeeDTO;
 import com.udacity.jdnd.critter.dto.EmployeeRequestDTO;
-import com.udacity.jdnd.critter.enums.EmployeeSkill;
 import com.udacity.jdnd.critter.service.CustomerService;
 import com.udacity.jdnd.critter.service.EmployeeService;
 import com.udacity.jdnd.critter.service.PetService;
@@ -59,9 +57,14 @@ public class UserController {
     @GetMapping("/customer/pet/{petId}")
     public CustomerDTO getOwnerByPet(@PathVariable long petId) {
         Pet pet = petService.findById(petId);
-        Customer owner = customerService.findById(pet.getCustomer().getId());
+        if (pet == null) {
+            return new CustomerDTO();
+        }
+        Customer owner = customerService.findByPet(pet);
+        if (owner == null) {
+            return new CustomerDTO();
+        }
         CustomerDTO ownerDto = convertCustomerToCustomerDTO(owner, new CustomerDTO());
-        ownerDto.getPetIds().add(pet.getId());
         return ownerDto;
     }
     //</editor-fold>
@@ -89,15 +92,11 @@ public class UserController {
 
     @GetMapping("/employee/availability")
     public List<EmployeeDTO> findEmployeesForService(@RequestBody EmployeeRequestDTO employeeDTO) {
-        //Find employees by date
-        List<Employee> employees = scheduleService.findEmployeesByDate(employeeDTO.getDate());
+        List<Employee> employees = employeeService.findByDateAndSkills(employeeDTO.getDate(), employeeDTO.getSkills());
         List<EmployeeDTO> employeeDTOS = new ArrayList<>();
-        //Filter available employees by skills
-        employees.forEach(employee -> {
-            if (employee.getSkills().containsAll(employeeDTO.getSkills())){
-                employeeDTOS.add(convertEmployeeToEmployeeDTO(employee,new EmployeeDTO()));
-            }
-        });
+        for (Employee employee : employees) {
+            employeeDTOS.add(convertEmployeeToEmployeeDTO(employee,new EmployeeDTO()));
+        }
         return employeeDTOS;
     }
 
@@ -105,25 +104,22 @@ public class UserController {
 
     //<editor-fold desc="DTO converters">
     private Customer convertCustomerDTOToCustomer(CustomerDTO customerDTO, Customer customer) {
-        if (customer != null) {
-            //Copy everything except id
-            BeanUtils.copyProperties(customerDTO, customer, "id");
-        } else {
-            //Copy everything
-            BeanUtils.copyProperties(customerDTO, customer);
-        }
-
+        //Copy everything
+        BeanUtils.copyProperties(customerDTO, customer);
+        List<Pet> pets = new ArrayList<>();
         if (customerDTO.getPetIds() != null) {
-            List<Pet> pets = new ArrayList<>();
             for (Long petId : customerDTO.getPetIds()) {
                 pets.add(petService.findById(petId));
             }
-            customer.setPets(pets);
         }
+        customer.setPets(pets);
         return customer;
     }
 
     private CustomerDTO convertCustomerToCustomerDTO(Customer customer, CustomerDTO customerDTO) {
+        if (customer == null) {
+            return customerDTO;
+        }
         BeanUtils.copyProperties(customer, customerDTO);
         if (customer.getPets() != null) {
             List<Long> petIds = new ArrayList<>();
@@ -136,11 +132,7 @@ public class UserController {
     }
 
     private Employee convertEmployeeDTOToEmployee(EmployeeDTO employeeDTO, Employee employee) {
-        if (employee != null) {
-            BeanUtils.copyProperties(employeeDTO, employee, "id");
-        } else {
-            BeanUtils.copyProperties(employeeDTO, employee);
-        }
+        BeanUtils.copyProperties(employeeDTO, employee);
         return employee;
     }
 

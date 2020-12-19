@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Handles web requests related to Schedules.
@@ -45,25 +44,23 @@ public class ScheduleController {
         schedules.add(schedule);
 
         //add employee to schedule
-        if (scheduleDTO.getEmployeeIds()!=null) {
+        if (scheduleDTO.getEmployeeIds() != null) {
             scheduleDTO.getEmployeeIds().forEach(empId -> {
                 Employee employee = employeeService.findById(empId);
-                employee.setSchedules(schedules);
+                //employee.setSchedules(schedules);
                 employees.add(employee);
-                //  employeeService.save(employee);
             });
+            schedule.setEmployees(employees);
         }
         //add pets to schedule
-        if (scheduleDTO.getPetIds()!=null) {
+        if (scheduleDTO.getPetIds() != null) {
             scheduleDTO.getPetIds().forEach(petId -> {
                 Pet pet = petService.findById(petId);
-                pet.setSchedules(schedules);
+                //pet.setSchedules(schedules);
                 pets.add(pet);
-                // petService.save(pet);
             });
+            schedule.setPets(pets);
         }
-        schedule.setEmployees(employees);
-        schedule.setPets(pets);
         scheduleService.save(schedule);
         return convertScheduleToScheduleDTO(schedule, new ScheduleDTO());
     }
@@ -92,7 +89,7 @@ public class ScheduleController {
         Employee employee = employeeService.findById(employeeId);
         List<ScheduleDTO> scheduleDTOS = new ArrayList<>();
         //Find schedules by employee
-        Set<Schedule> schedules = scheduleService.findByEmployee(employee);
+        List<Schedule> schedules = scheduleService.findByEmployee(employee);
         //convert to DTO
         schedules.forEach(schedule -> scheduleDTOS.add(convertScheduleToScheduleDTO(schedule, new ScheduleDTO())));
         return scheduleDTOS;
@@ -105,7 +102,7 @@ public class ScheduleController {
         List<ScheduleDTO> scheduleDTOS = new ArrayList<>();
         Set<Schedule> schedules = new HashSet<>();
         //Get schedules of all pets of the customer
-        if (!pets.isEmpty()) {
+        if (pets != null) {
             pets.forEach(pet -> schedules.addAll(scheduleService.findByPet(pet)));
         }
         //convert to DTO
@@ -115,27 +112,28 @@ public class ScheduleController {
 
     //<editor-fold desc="DTO converters">
     private Schedule convertScheduleDTOToSchedule(ScheduleDTO scheduleDTO, Schedule schedule) {
-        if (schedule != null) {
-            //Copy everything except id
-            BeanUtils.copyProperties(scheduleDTO, schedule, "id");
-        } else {
-            //Copy everything
-            BeanUtils.copyProperties(scheduleDTO, schedule);
-        }
+
+        //Copy everything
+        BeanUtils.copyProperties(scheduleDTO, schedule);
+        List<Pet> pets = new ArrayList<>();
         if (scheduleDTO.getPetIds() != null) {
-            List<Pet> pets = new ArrayList<>();
             for (Long petId : scheduleDTO.getPetIds()) {
-                pets.add(petService.findById(petId));
+                if (petService.findById(petId) != null) {
+                    pets.add(petService.findById(petId));
+                }
             }
-            schedule.setPets(pets);
         }
+        schedule.setPets(pets);
+
+        List<Employee> employees = new ArrayList<>();
         if (scheduleDTO.getEmployeeIds() != null) {
-            List<Employee> employees = new ArrayList<>();
             for (Long empId : scheduleDTO.getEmployeeIds()) {
-                employees.add(employeeService.findById(empId));
+                if (employeeService.findById(empId) != null) {
+                    employees.add(employeeService.findById(empId));
+                }
             }
-            schedule.setEmployees(employees);
         }
+        schedule.setEmployees(employees);
         return schedule;
     }
 
@@ -145,14 +143,18 @@ public class ScheduleController {
         if (schedule.getPets() != null) {
             List<Long> petIds = new ArrayList<>();
             for (Pet pet : schedule.getPets()) {
-                petIds.add(pet.getId());
+                if (pet != null) {
+                    petIds.add(pet.getId());
+                }
             }
             scheduleDTO.setPetIds(petIds);
         }
         if (schedule.getEmployees() != null) {
             List<Long> employeeIds = new ArrayList<>();
             for (Employee emp : schedule.getEmployees()) {
-                employeeIds.add(emp.getId());
+                if (emp != null) {
+                    employeeIds.add(emp.getId());
+                }
             }
             scheduleDTO.setEmployeeIds(employeeIds);
         }

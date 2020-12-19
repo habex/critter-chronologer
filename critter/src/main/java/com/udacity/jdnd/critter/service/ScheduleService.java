@@ -3,7 +3,6 @@ package com.udacity.jdnd.critter.service;
 import com.udacity.jdnd.critter.data.Employee;
 import com.udacity.jdnd.critter.data.Pet;
 import com.udacity.jdnd.critter.data.Schedule;
-import com.udacity.jdnd.critter.enums.EmployeeSkill;
 import com.udacity.jdnd.critter.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,11 +40,10 @@ public class ScheduleService {
     }
 
     public List<Schedule> findByPet(Pet pet){
-        return scheduleRepository.findByPet(pet);
+        return scheduleRepository.findByPets(pet);
     }
 
-    public Set<Schedule> findByEmployee(Employee employee){
-        return scheduleRepository.findByEmployee(employee);
+    public List<Schedule> findByEmployee(Employee employee){
+        return scheduleRepository.findAllByEmployees(employee);
     }
-
 }

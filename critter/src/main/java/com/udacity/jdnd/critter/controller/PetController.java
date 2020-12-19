@@ -26,23 +26,24 @@ public class PetController {
 
     @PostMapping
     public PetDTO savePet(@RequestBody PetDTO petDTO) {
-        Pet pet = convertPetDTOToPet(petDTO,new Pet());
+        Pet pet = convertPetDTOToPet(petDTO, new Pet());
         petService.save(pet);
         //convert pet to petDTO and return
-        return convertPetToPetDTO(pet,new PetDTO());
+        PetDTO petDTO1 = convertPetToPetDTO(pet, new PetDTO());
+        return petDTO1;
     }
 
     @PutMapping("/{petId}")
     public void updatePet(@RequestBody PetDTO petDTO, @PathVariable long petId) {
         Pet pet = petService.findById(petId);
-        convertPetDTOToPet(petDTO,pet);
+        convertPetDTOToPet(petDTO, pet);
         petService.save(pet);
     }
 
     @GetMapping("/{petId}")
     public PetDTO getPet(@PathVariable long petId) {
         Pet pet = petService.findById(petId);
-        return convertPetToPetDTO(pet,new PetDTO());
+        return convertPetToPetDTO(pet, new PetDTO());
     }
 
     @GetMapping
@@ -55,7 +56,7 @@ public class PetController {
     @GetMapping("/owner/{ownerId}")
     public List<PetDTO> getPetsByOwner(@PathVariable long ownerId) {
         List<PetDTO> petDTOs = new ArrayList<>();
-        petService.findByCustomerId(ownerId).forEach(pet -> petDTOs.add(convertPetToPetDTO(pet,new PetDTO())));
+        petService.findByCustomerId(ownerId).forEach(pet -> petDTOs.add(convertPetToPetDTO(pet, new PetDTO())));
         return petDTOs;
     }
 
@@ -69,20 +70,15 @@ public class PetController {
     }
 
     private Pet convertPetDTOToPet(PetDTO petDTO, Pet pet) {
-
-        if (pet != null) {
-            //Copy everything except id
-            BeanUtils.copyProperties(petDTO, pet, "id");
-        } else {
-            //Copy everything
-            BeanUtils.copyProperties(petDTO, pet);
+        //Copy everything
+        BeanUtils.copyProperties(petDTO, pet);
+        if (customerService.findById(petDTO.getOwnerId()) == null) {
+            return null;
         }
         //Setting ownerId to PetDTO and customer to Pet
-        if (customerService.findById(petDTO.getOwnerId()) != null) {
-            Customer owner = customerService.findById(petDTO.getOwnerId());
-            pet.setCustomer(owner);
-            owner.getPets().add(pet);
-        }
+        Customer owner = customerService.findById(petDTO.getOwnerId());
+        pet.setCustomer(owner);
+        owner.getPets().add(pet);
         return pet;
     }
     //</editor-fold>

@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 @Transactional
@@ -34,7 +34,17 @@ public class EmployeeService {
         return null;
     }
 
-    public List<Employee> findBySkills(Set<EmployeeSkill> skills){
-        return employeeRepository.findBySkills(skills);
+    public List<Employee> findByDateAndSkills(LocalDate date, Set<EmployeeSkill> skills){
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
+        Set<DayOfWeek> daySet = new HashSet<>();
+        daySet.add(dayOfWeek);
+        List<Employee> employees = employeeRepository.findByDaysAvailableInAndSkillsIn(daySet,skills);
+        List<Employee> employeeList = new ArrayList<>();
+        for(Employee employee: employees){
+            if(employee.getSkills().containsAll(skills)){
+                employeeList.add(employee);
+            }
+        }
+        return employeeList;
     }
 }
