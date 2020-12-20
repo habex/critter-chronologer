@@ -28,28 +28,30 @@ public class EmployeeService {
 
     public Employee findById(Long id) {
         Optional<Employee> optionalEmployee = employeeRepository.findById(id);
-        if(optionalEmployee.isPresent()){
+        if (optionalEmployee.isPresent()) {
             return optionalEmployee.get();
         }
         return null;
     }
 
-    public List<Employee> findAllById(List<Long> empIds){
-        if(empIds != null){
-           return employeeRepository.findAllById(empIds);
+    public List<Employee> findAllById(List<Long> empIds) {
+        if (empIds != null) {
+            return employeeRepository.findAllById(empIds);
         }
         return null;
     }
 
-    public List<Employee> findByDateAndSkills(LocalDate date, Set<EmployeeSkill> skills){
+    public List<Employee> findByDateAndSkills(LocalDate date, Set<EmployeeSkill> skills) {
         DayOfWeek dayOfWeek = date.getDayOfWeek();
         Set<DayOfWeek> daySet = new HashSet<>();
         daySet.add(dayOfWeek);
-        List<Employee> employees = employeeRepository.findByDaysAvailableInAndSkillsIn(daySet,skills);
+        Optional<List<Employee>> employees = employeeRepository.findByDaysAvailableInAndSkillsIn(daySet, skills);
         List<Employee> employeeList = new ArrayList<>();
-        for(Employee employee: employees){
-            if(employee.getSkills().containsAll(skills)){
-                employeeList.add(employee);
+        if (employees.isPresent()) {
+            for (Employee employee : employees.get()) {
+                if (employee.getSkills().containsAll(skills)) {
+                    employeeList.add(employee);
+                }
             }
         }
         return employeeList;

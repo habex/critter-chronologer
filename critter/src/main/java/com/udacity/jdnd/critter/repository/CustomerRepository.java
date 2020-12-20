@@ -11,6 +11,5 @@ import java.util.Optional;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer,Long> {
-    //@Query("SELECT s FROM Customer s WHERE :pet member of s.pets")
-    Optional<Customer> findByPets( Pet pet);
+      Optional<Customer> findByPets( Pet pet);
 }

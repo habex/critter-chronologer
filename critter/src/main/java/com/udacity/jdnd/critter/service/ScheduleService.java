@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -27,23 +28,19 @@ public class ScheduleService {
         return scheduleRepository.findAll();
     }
 
-    public Schedule findById (Long id){
-        return scheduleRepository.findById(id).get();
-    }
-
-    public List<Schedule> findByDate(LocalDate date){
-        return scheduleRepository.findByDate(date);
-    }
-
-    public List<Employee> findEmployeesByDate(LocalDate date){
-        return scheduleRepository.findEmployeesByDate(date);
-    }
-
     public List<Schedule> findByPet(Pet pet){
-        return scheduleRepository.findByPets(pet);
+        Optional<List<Schedule>> optionalPets =scheduleRepository.findByPets(pet);
+        if(optionalPets.isPresent()){
+            return optionalPets.get();
+        }
+        return null;
     }
 
     public List<Schedule> findByEmployee(Employee employee){
-        return scheduleRepository.findAllByEmployees(employee);
+        Optional<List<Schedule>> optionalPets = scheduleRepository.findAllByEmployees(employee);
+        if(optionalPets.isPresent()){
+            return optionalPets.get();
+        }
+        return null;
     }
 }

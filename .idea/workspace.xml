@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e463c8c0-a1b9-467b-ac9f-e51540f4304b" name="Default Changelist" comment="All Test Passed">
+    <list default="true" id="e463c8c0-a1b9-467b-ac9f-e51540f4304b" name="Default Changelist" comment="All Test Passed&#10;EmployeeService and PetService findAllById added &#10;ScheduleController modified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/ScheduleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/CustomerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/EmployeeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/PetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/PetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/ScheduleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/ScheduleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/ScheduleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/test/java/com/udacity/jdnd/critter/repository/PetRepositoryTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +157,7 @@
     <MESSAGE value="PetController CRUD operations with DTO converters add and PetRepository" />
     <MESSAGE value="Repositories, Services and Controllers for All completed" />
     <MESSAGE value="All Test Passed" />
-    <option name="LAST_COMMIT_MESSAGE" value="All Test Passed" />
+    <MESSAGE value="All Test Passed&#10;EmployeeService and PetService findAllById added &#10;ScheduleController modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="All Test Passed&#10;EmployeeService and PetService findAllById added &#10;ScheduleController modified" />
   </component>
 </project>
