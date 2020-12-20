@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +29,13 @@ public class PetService {
         Optional<Pet> optionalPet = petRepository.findById(id);
         if (optionalPet.isPresent()){
             return optionalPet.get();
+        }
+        return null;
+    }
+
+    public List<Pet> findAllById(List<Long> petIds){
+        if(petIds != null){
+           return petRepository.findAllById(petIds);
         }
         return null;
     }

@@ -34,6 +34,13 @@ public class EmployeeService {
         return null;
     }
 
+    public List<Employee> findAllById(List<Long> empIds){
+        if(empIds != null){
+           return employeeRepository.findAllById(empIds);
+        }
+        return null;
+    }
+
     public List<Employee> findByDateAndSkills(LocalDate date, Set<EmployeeSkill> skills){
         DayOfWeek dayOfWeek = date.getDayOfWeek();
         Set<DayOfWeek> daySet = new HashSet<>();

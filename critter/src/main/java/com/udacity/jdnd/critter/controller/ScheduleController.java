@@ -38,27 +38,17 @@ public class ScheduleController {
     public ScheduleDTO createSchedule(@RequestBody ScheduleDTO scheduleDTO) {
         Schedule schedule = convertScheduleDTOToSchedule(scheduleDTO, new Schedule());
 
-        List<Employee> employees = new ArrayList<>();
-        List<Pet> pets = new ArrayList<>();
+        List<Employee> employees = employeeService.findAllById(scheduleDTO.getEmployeeIds());
+        List<Pet> pets = petService.findAllById(scheduleDTO.getPetIds());
         Set<Schedule> schedules = new HashSet<>();
         schedules.add(schedule);
 
         //add employee to schedule
-        if (scheduleDTO.getEmployeeIds() != null) {
-            scheduleDTO.getEmployeeIds().forEach(empId -> {
-                Employee employee = employeeService.findById(empId);
-                //employee.setSchedules(schedules);
-                employees.add(employee);
-            });
+        if (employees != null) {
             schedule.setEmployees(employees);
         }
         //add pets to schedule
-        if (scheduleDTO.getPetIds() != null) {
-            scheduleDTO.getPetIds().forEach(petId -> {
-                Pet pet = petService.findById(petId);
-                //pet.setSchedules(schedules);
-                pets.add(pet);
-            });
+        if (employees != null) {
             schedule.setPets(pets);
         }
         scheduleService.save(schedule);
