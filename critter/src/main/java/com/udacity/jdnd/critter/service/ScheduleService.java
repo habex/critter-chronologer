@@ -8,37 +8,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 @Transactional
 public class ScheduleService {
 
     @Autowired
-    ScheduleRepository scheduleRepository;
+    private ScheduleRepository scheduleRepository;
 
-    public Long save(Schedule schedule){
-        return scheduleRepository.save(schedule).getId();
+    public Schedule save(Schedule schedule) {
+        return scheduleRepository.save(schedule);
     }
 
-    public List<Schedule> findAll(){
+    public List<Schedule> findAll() {
         return scheduleRepository.findAll();
     }
 
-    public List<Schedule> findByPet(Pet pet){
-        Optional<List<Schedule>> optionalPets =scheduleRepository.findByPets(pet);
-        if(optionalPets.isPresent()){
+    public Schedule findById(Long id) {
+        Optional<Schedule> optionalSchedule = scheduleRepository.findById(id);
+        if (optionalSchedule.isPresent()) {
+            return optionalSchedule.get();
+        }
+        return null;
+    }
+
+    public List<Schedule> findByPet(Pet pet) {
+        Optional<List<Schedule>> optionalPets = scheduleRepository.findAllByPets(pet);
+        if (optionalPets.isPresent()) {
             return optionalPets.get();
         }
         return null;
     }
 
-    public List<Schedule> findByEmployee(Employee employee){
+    public List<Schedule> findByEmployee(Employee employee) {
         Optional<List<Schedule>> optionalPets = scheduleRepository.findAllByEmployees(employee);
-        if(optionalPets.isPresent()){
+        if (optionalPets.isPresent()) {
             return optionalPets.get();
         }
         return null;

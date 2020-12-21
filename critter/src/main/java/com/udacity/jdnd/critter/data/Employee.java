@@ -17,7 +17,7 @@ public class Employee {
     @Nationalized
     private String name;
 
-    @ElementCollection(fetch = FetchType.EAGER)
+    @ElementCollection(fetch = FetchType.EAGER, targetClass = EmployeeSkill.class)
     @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> skills;
 
@@ -25,12 +25,8 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Set<DayOfWeek> daysAvailable;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "schedules_id")
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "employees",cascade = CascadeType.ALL)
     private Set<Schedule> schedules;
-
-    public Employee() {
-    }
 
     public long getId() {
         return id;

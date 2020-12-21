@@ -14,9 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Handles web requests related to Schedules.
@@ -37,18 +35,14 @@ public class ScheduleController {
     @PostMapping
     public ScheduleDTO createSchedule(@RequestBody ScheduleDTO scheduleDTO) {
         Schedule schedule = convertScheduleDTOToSchedule(scheduleDTO, new Schedule());
-
         List<Employee> employees = employeeService.findAllById(scheduleDTO.getEmployeeIds());
         List<Pet> pets = petService.findAllById(scheduleDTO.getPetIds());
-        Set<Schedule> schedules = new HashSet<>();
-        schedules.add(schedule);
-
         //add employee to schedule
         if (employees != null) {
             schedule.setEmployees(employees);
         }
         //add pets to schedule
-        if (employees != null) {
+        if (pets != null) {
             schedule.setPets(pets);
         }
         scheduleService.save(schedule);
@@ -66,6 +60,9 @@ public class ScheduleController {
     @GetMapping("/pet/{petId}")
     public List<ScheduleDTO> getScheduleForPet(@PathVariable long petId) {
         Pet pet = petService.findById(petId);
+        if (pet == null) {
+            throw new UnsupportedOperationException("Pet not found");
+        }
         List<ScheduleDTO> scheduleDTOS = new ArrayList<>();
         //Find schedules by pet
         List<Schedule> schedules = scheduleService.findByPet(pet);
@@ -77,6 +74,9 @@ public class ScheduleController {
     @GetMapping("/employee/{employeeId}")
     public List<ScheduleDTO> getScheduleForEmployee(@PathVariable long employeeId) {
         Employee employee = employeeService.findById(employeeId);
+        if (employee == null) {
+            throw new UnsupportedOperationException("Employee not found");
+        }
         List<ScheduleDTO> scheduleDTOS = new ArrayList<>();
         //Find schedules by employee
         List<Schedule> schedules = scheduleService.findByEmployee(employee);
@@ -88,13 +88,17 @@ public class ScheduleController {
     @GetMapping("/customer/{customerId}")
     public List<ScheduleDTO> getScheduleForCustomer(@PathVariable long customerId) {
         Customer customer = customerService.findById(customerId);
-        List<Pet> pets = customer.getPets();
-        List<ScheduleDTO> scheduleDTOS = new ArrayList<>();
-        Set<Schedule> schedules = new HashSet<>();
-        //Get schedules of all pets of the customer
-        if (pets != null) {
-            pets.forEach(pet -> schedules.addAll(scheduleService.findByPet(pet)));
+        if (customer == null) {
+            throw new UnsupportedOperationException("Customer for not found");
         }
+        List<Pet> pets = petService.findAllByCustomer(customer);
+        List<ScheduleDTO> scheduleDTOS = new ArrayList<>();
+        List<Schedule> schedules = new ArrayList<>();
+        //Get schedules of all pets of the customer
+        if (pets == null) {
+            throw new UnsupportedOperationException("No pets found");
+        }
+        pets.forEach(pet -> schedules.addAll(scheduleService.findByPet(pet)));
         //convert to DTO
         schedules.forEach(schedule -> scheduleDTOS.add(convertScheduleToScheduleDTO(schedule, new ScheduleDTO())));
         return scheduleDTOS;
@@ -102,28 +106,8 @@ public class ScheduleController {
 
     //<editor-fold desc="DTO converters">
     private Schedule convertScheduleDTOToSchedule(ScheduleDTO scheduleDTO, Schedule schedule) {
-
         //Copy everything
         BeanUtils.copyProperties(scheduleDTO, schedule);
-        List<Pet> pets = new ArrayList<>();
-        if (scheduleDTO.getPetIds() != null) {
-            for (Long petId : scheduleDTO.getPetIds()) {
-                if (petService.findById(petId) != null) {
-                    pets.add(petService.findById(petId));
-                }
-            }
-        }
-        schedule.setPets(pets);
-
-        List<Employee> employees = new ArrayList<>();
-        if (scheduleDTO.getEmployeeIds() != null) {
-            for (Long empId : scheduleDTO.getEmployeeIds()) {
-                if (employeeService.findById(empId) != null) {
-                    employees.add(employeeService.findById(empId));
-                }
-            }
-        }
-        schedule.setEmployees(employees);
         return schedule;
     }
 

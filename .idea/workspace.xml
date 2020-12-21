@@ -4,14 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e463c8c0-a1b9-467b-ac9f-e51540f4304b" name="Default Changelist" comment="All Test Passed&#10;EmployeeService and PetService findAllById added &#10;ScheduleController modified">
+    <list default="true" id="e463c8c0-a1b9-467b-ac9f-e51540f4304b" name="Default Changelist" comment="Modified repositories.&#10;Removed temporary codes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/PetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/PetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/ScheduleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Pet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/data/Schedule.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/CustomerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/EmployeeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/EmployeeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/PetRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/PetRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/ScheduleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository/ScheduleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/EmployeeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/PetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/PetService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/service/ScheduleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/critter/src/test/java/com/udacity/jdnd/critter/repository/PetRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/critter/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/critter/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/critter/src/main/java/com/udacity/jdnd/critter/repository" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/critter-chronologer-b" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -114,11 +125,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PetRepositoryTest.getByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CritterFunctionalTest.testSchedulePetsForServiceWithEmployee" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="critter" />
-      <option name="PACKAGE_NAME" value="com.udacity.jdnd.critter.repository" />
-      <option name="MAIN_CLASS_NAME" value="com.udacity.jdnd.critter.repository.PetRepositoryTest" />
-      <option name="METHOD_NAME" value="getByName" />
+      <option name="PACKAGE_NAME" value="com.udacity.jdnd.critter" />
+      <option name="MAIN_CLASS_NAME" value="com.udacity.jdnd.critter.CritterFunctionalTest" />
+      <option name="METHOD_NAME" value="testSchedulePetsForServiceWithEmployee" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -127,10 +138,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CritterFunctionalTest" />
-        <item itemvalue="Application.CritterApplication" />
+        <item itemvalue="JUnit.CritterFunctionalTest.testSchedulePetsForServiceWithEmployee" />
         <item itemvalue="JUnit.CritterFunctionalTest.testFindScheduleByEntities" />
+        <item itemvalue="Application.CritterApplication" />
         <item itemvalue="JUnit.CritterFunctionalTest.testFindOwnerByPet" />
-        <item itemvalue="JUnit.PetRepositoryTest.getByName" />
       </list>
     </recent_temporary>
   </component>
@@ -158,6 +169,7 @@
     <MESSAGE value="Repositories, Services and Controllers for All completed" />
     <MESSAGE value="All Test Passed" />
     <MESSAGE value="All Test Passed&#10;EmployeeService and PetService findAllById added &#10;ScheduleController modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="All Test Passed&#10;EmployeeService and PetService findAllById added &#10;ScheduleController modified" />
+    <MESSAGE value="Modified repositories.&#10;Removed temporary codes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified repositories.&#10;Removed temporary codes" />
   </component>
 </project>

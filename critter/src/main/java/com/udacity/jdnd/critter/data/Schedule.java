@@ -14,12 +14,18 @@ public class Schedule {
     @GeneratedValue
     private long id;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "employee_id")
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinTable(name="schedule_employee",
+            joinColumns = @JoinColumn(name="schdeule_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id")
+    )
     private List<Employee> employees;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "pet_id")
+    @ManyToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
+    @JoinTable(name="schdeule_pet",
+            joinColumns = @JoinColumn(name = "schedule_id"),
+            inverseJoinColumns = @JoinColumn(name = "pet_id")
+    )
     private List<Pet> pets;
 
     private LocalDate date;
@@ -27,9 +33,6 @@ public class Schedule {
     @ElementCollection
     @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> activities;
-
-    public Schedule() {
-    }
 
     public long getId() {
         return id;

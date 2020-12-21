@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.time.DayOfWeek;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-    List<Employee> findByDaysAvailableInAndSkillsIn(Set<DayOfWeek> daysAvailable, Set<EmployeeSkill> skills);
-
+   Optional< List<Employee>> findByDaysAvailableInAndSkillsIn(Set<DayOfWeek> daysAvailable, Set<EmployeeSkill> skills);
 }

@@ -3,7 +3,6 @@ package com.udacity.jdnd.critter.data;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -20,11 +19,8 @@ public class Customer {
 
     private String notes;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
     private List<Pet> pets;
-
-    public Customer() {
-    }
 
     public long getId() {
         return id;

@@ -22,7 +22,7 @@ public class EmployeeService {
         return employeeRepository.save(employee).getId();
     }
 
-    public List<Employee> employees() {
+    public List<Employee> findAll() {
         return employeeRepository.findAll();
     }
 

@@ -9,7 +9,6 @@ import com.udacity.jdnd.critter.dto.EmployeeRequestDTO;
 import com.udacity.jdnd.critter.service.CustomerService;
 import com.udacity.jdnd.critter.service.EmployeeService;
 import com.udacity.jdnd.critter.service.PetService;
-import com.udacity.jdnd.critter.service.ScheduleService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,15 +34,13 @@ public class UserController {
     EmployeeService employeeService;
     @Autowired
     PetService petService;
-    @Autowired
-    ScheduleService scheduleService;
 
     //<editor-fold desc="Customer">
     @PostMapping("/customer")
     public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO) {
         Customer customer = convertCustomerDTOToCustomer(customerDTO, new Customer());
-        customerService.save(customer);
-        return convertCustomerToCustomerDTO(customer, new CustomerDTO());
+        Long customerId = customerService.save(customer);
+        return convertCustomerToCustomerDTO(customerService.findById(customerId), new CustomerDTO());
     }
 
     @GetMapping("/customer")
@@ -57,12 +54,9 @@ public class UserController {
     public CustomerDTO getOwnerByPet(@PathVariable long petId) {
         Pet pet = petService.findById(petId);
         if (pet == null) {
-            return new CustomerDTO();
+            throw new UnsupportedOperationException("No pet found");
         }
         Customer owner = customerService.findByPet(pet);
-        if (owner == null) {
-            return new CustomerDTO();
-        }
         CustomerDTO ownerDto = convertCustomerToCustomerDTO(owner, new CustomerDTO());
         return ownerDto;
     }
@@ -72,8 +66,8 @@ public class UserController {
     @PostMapping("/employee")
     public EmployeeDTO saveEmployee(@RequestBody EmployeeDTO employeeDTO) {
         Employee employee = convertEmployeeDTOToEmployee(employeeDTO, new Employee());
-        employeeService.save(employee);
-        return convertEmployeeToEmployeeDTO(employee, new EmployeeDTO());
+        Long empId = employeeService.save(employee);
+        return convertEmployeeToEmployeeDTO(employeeService.findById(empId), new EmployeeDTO());
     }
 
     @PostMapping("/employee/{employeeId}")
@@ -94,7 +88,7 @@ public class UserController {
         List<Employee> employees = employeeService.findByDateAndSkills(employeeDTO.getDate(), employeeDTO.getSkills());
         List<EmployeeDTO> employeeDTOS = new ArrayList<>();
         for (Employee employee : employees) {
-            employeeDTOS.add(convertEmployeeToEmployeeDTO(employee,new EmployeeDTO()));
+            employeeDTOS.add(convertEmployeeToEmployeeDTO(employee, new EmployeeDTO()));
         }
         return employeeDTOS;
     }
@@ -105,13 +99,6 @@ public class UserController {
     private Customer convertCustomerDTOToCustomer(CustomerDTO customerDTO, Customer customer) {
         //Copy everything
         BeanUtils.copyProperties(customerDTO, customer);
-        List<Pet> pets = new ArrayList<>();
-        if (customerDTO.getPetIds() != null) {
-            for (Long petId : customerDTO.getPetIds()) {
-                pets.add(petService.findById(petId));
-            }
-        }
-        customer.setPets(pets);
         return customer;
     }
 

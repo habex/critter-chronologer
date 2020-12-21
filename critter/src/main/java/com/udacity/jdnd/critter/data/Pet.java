@@ -20,12 +20,11 @@ public class Pet {
     @Nationalized
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "owner_id")
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private Customer customer;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "schedules_id")
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "pets", cascade = CascadeType.ALL)
     private Set<Schedule> schedules;
 
     private LocalDate birthDate;
